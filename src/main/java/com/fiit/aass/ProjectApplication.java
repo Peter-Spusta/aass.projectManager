@@ -14,6 +14,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import com.fiit.aass.entity.Employee;
@@ -23,35 +24,24 @@ import com.fiit.aass.repository.LocationRepository;
 import com.fiit.aass.service.ProjectService;
 import com.fiit.aass.view.MainView;
 
-//@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"aass.entity", "com.fiit.aass.controller", "aass.repository"})
 public class ProjectApplication extends JFrame  {
 	
 //	@Autowired
 //	ProjectService projectService;
-	
-	 public static void main(String[] args) {
+	private static ApplicationContext applicationContext;
+	public static void main(String[] args) {
 		 
-//		 SpringApplication.run(ProjectApplication.class, args);
-//		 ConfigurableApplicationContext ctx = new SpringApplicationBuilder(ProjectApplication.class)
-//		            .headless(false).run(args);
-//
-//	    EventQueue.invokeLater(() -> {
-//	    	ProjectApplication ex = ctx.getBean(ProjectApplication.class);
-//	        ex.setVisible(true);
-//	    });
-		 
-		 EventQueue.invokeLater(new Runnable() {
-				public void run() {
-					try {
-						MainView frame = new MainView();
-						frame.initUi();
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-			});
-		    
-	}
+		 applicationContext = SpringApplication.run(ProjectApplication.class, args);
+//	        displayAllBeans();
+    }
+    
+    public static void displayAllBeans() {
+        String[] allBeanNames = applicationContext.getBeanDefinitionNames();
+        for(String beanName : allBeanNames) {
+            System.out.println(beanName);
+        }
+    }
 	
 //    public ProjectApplication() {
 //        MainView mainView = new MainView();
