@@ -24,7 +24,7 @@ import com.fiit.aass.repository.LocationRepository;
 import com.fiit.aass.service.ProjectService;
 import com.fiit.aass.view.MainView;
 
-@SpringBootApplication(scanBasePackages = {"aass.entity", "com.fiit.aass.controller", "aass.repository"})
+@SpringBootApplication(scanBasePackages = {"aass.entity", "com.fiit.aass.controller", "aass.repository", "com.fiit.aass.soap"})
 public class ProjectApplication extends JFrame  {
 	
 //	@Autowired
